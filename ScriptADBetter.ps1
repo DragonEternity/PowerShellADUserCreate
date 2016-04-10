@@ -1,5 +1,6 @@
 ﻿# Requires User Input
 $CSV = Read-Host 'Please specify the path of your .csv'
+$COMP = Read-Host 'Please specify your computer name'
 $OU = Read-Host 'Please specify an OU'
 $DC1 = Read-Host 'Please specify a DC' 
 $DC2 = Read-Host 'Please specify a DC extension'
@@ -26,8 +27,8 @@ New-ADUser `
 -ChangePasswordAtLogon $true `
 -Enabled $true `
 -HomeDrive "H:" `
--HomeDirectory "\\WIN-6MS9H2UM9VJ\$Name\UserData" `
--ProfilePath: "\\WIN-6MS9H2UM9VJ\$Name\"
+-HomeDirectory "\\2016test1\$Name\UserData" `
+-ProfilePath: "\\2016test1\$Name\"
 Add-ADGroupMember "Group1" "$LogonUsername"
 
 # Share folder and set rights
@@ -37,8 +38,8 @@ New-SmbShare  -Name $Name -Path C:\Hey\$LogonUsername -ChangeAccess $LogonUserna
 Icacls C:\Hey\$LogonUsername /inheritance:r /grant:r ${LogonUsername}:"(OI)(CI)M"
 
 # Check if the user is there and write to log.
-if( Get-ADUser -Filter "SAMAccountName -like $LogonUsername")
-{write-host "Created $Name" 
+if( Get-ADUser -f "SamAccountName -like '$LogonUsername'")
+{write-host "Created $Name"
   Out-File -FilePath C:\Hey\Log.txt -inputobject "Created $Name" -append}
   else {write-host "Failed to create $Name"}
 
