@@ -1,8 +1,13 @@
-﻿
-# Import CSV
-Import-Csv "Users.csv" | ForEach-Object {Write-Host $_."Name"} {
+﻿# Requires User Input
+$CSV = Read-Host 'Please specify the path of your .csv'
+$OU = Read-Host 'Please specify an OU'
+$DC1 = Read-Host 'Please specify a DC' 
+$DC2 = Read-Host 'Please specify a DC extension'
 
-# Set values
+# Import CSV
+Import-Csv $CSV | ForEach-Object {Write-Host $_."Name"} {
+
+# Import Variables
 $LogonUsername = $_."LogonUsername" 
 $Name = $_."Name"
 $Displayname = $_."Displayname"
@@ -14,7 +19,7 @@ New-Item -Path C:\Hey\$LogonUsername\UserData -Force -Type Directory
 # Create user and set stuff
 New-ADUser `
 -Name $Name `
--Path "OU=Scooliosis,DC=Scool,DC=Local" `
+-Path "OU=$OU,DC=$DC1,DC=$DC2" `
 -SamAccountName $LogonUsername `
 -Displayname $Displayname `
 -AccountPassword (ConvertTo-SecureString "Welkom01" -AsPlainText -Force) `
