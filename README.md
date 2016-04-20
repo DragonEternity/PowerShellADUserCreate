@@ -1,9 +1,16 @@
-An extremely basic script that creates users, puts them in an OU and security group than gives them share folders along with a roaming profile. Now also comes with a handy dandy little log file! 
+########################################
+########################################
+###    PowerShell
+###    AD User Create (With homedrive and roaming profile.)
+########################################
+########################################
 
-Right now the script requires very minor input from the user but once that's done it should be good to go on a specific machine.
+An easy, basic script that simply creates users in huge batches from a .csv file. Easy to use too, I hope.
 
-Possible to-do list?
+How-to guide:
 
-- Fully automate. (Is this even possible?)
+1. Start up powershell as admin.
+2. Run script
+3. Input what is asked for. (With the DC questions it'll first ask for your domain and then the extension I.E: git and then local.)
+4. Watch the miracles happen right before you. Not a single faith requirement in sight.
 
-But all this was to me was a learning experience so I'm happy. 
