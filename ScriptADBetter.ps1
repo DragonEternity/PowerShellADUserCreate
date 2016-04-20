@@ -1,6 +1,7 @@
 ﻿# Requires User Input
 $CSV = Read-Host 'Please specify the path of your .csv'
 $COMP = Read-Host 'Please specify your computer name'
+$OU = Read-Host 'Please specify an OU'
 $DC1 = Read-Host 'Please specify a DC' 
 $DC2 = Read-Host 'Please specify a DC extension'
 
@@ -19,7 +20,6 @@ $EmailAddress = $_. "EmailAddress"
 $EmployeeID = $_. "EmployeeID"
 $Division = $_. "Division"
 $EnrollmentDate = $_. "Date"
-$OU = $_. "OU"
 
 # Create Folder
 New-Item -Path C:\Hey\$LogonUsername -Force -Type Directory  
