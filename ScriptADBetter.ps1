@@ -8,12 +8,17 @@ $DC2 = Read-Host 'Please specify a DC extension'
 Import-Csv $CSV | ForEach-Object {Write-Host $_."Name"} {
 
 # Import Variables
-$LogonUsername = $_."LogonUsername" 
-$Name = $_."Name"
+ 
 $GivenName = $_. "GivenName"
 $OtherName = $_. "OtherName"
 $Surname = $_. "Surname"
+$Name = $_. "$GivenName.$Surname"
 $Displayname = $Name
+$LogonUsername = $_. $Name
+$EmailAddress = $_. "EmailAddress"
+$EmployeeID = $_. "EmployeeID"
+$Division = $_. "Division"
+$EnrollmentDate = $_. "Date"
 $OU = $_. "OU"
 
 # Create Folder
@@ -30,6 +35,10 @@ New-ADUser `
 -ChangePasswordAtLogon $true `
 -Enabled $true `
 -GivenName $GivenName `
+-EmailAddress $EmailAddress `
+-EmployeeID = $EmployeeID `
+-Divison = $Division `
+-Description = $EnrollmentDate
 -OtherName $OtherName `
 -Surname $Surname `
 -HomeDrive "H:" `
