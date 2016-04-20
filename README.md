@@ -11,6 +11,8 @@ How-to guide:
 
 1. Start up powershell as admin.
 2. Run script
-3. Input what is asked for. (With the DC questions it'll first ask for your domain and then the extension I.E: git and then local.)
+3. Input what is asked for. 
+ - With the DC questions it'll first ask for your domain and then the extension I.E: git and then local.
+ - If you want the userdata to go to C:/Users you should specify it as such. Not as C:/Users/
 4. Watch the miracles happen right before you. Not a single faith requirement in sight.
 
